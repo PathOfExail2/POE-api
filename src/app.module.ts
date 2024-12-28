@@ -1,9 +1,15 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { PingModule } from './modules/ping/ping.module';
+import { uuidMiddleware } from '@middlewares';
+import { DatabaseModule } from './databases/database.module';
 
 @Module({
-  imports: [PingModule],
+  imports: [DatabaseModule, PingModule],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(uuidMiddleware).forRoutes('*');
+  }
+}
