@@ -8,9 +8,6 @@ import {
 
 @Entity()
 export abstract class DddAggregate<T> {
-  @PrimaryGeneratedColumn()
-  id!: T;
-
   @CreateDateColumn()
   private readonly createdAt!: Date;
 
@@ -22,4 +19,11 @@ export abstract class DddAggregate<T> {
 
   @Column()
   private updatedBy!: string;
+
+  setTxId(txId: string) {
+    if (!this.createdBy) {
+      this.createdBy = txId;
+    }
+    this.updatedBy = txId;
+  }
 }
