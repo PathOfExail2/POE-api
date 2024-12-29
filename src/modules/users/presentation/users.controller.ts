@@ -30,7 +30,6 @@ export class UsersController {
   async create(@Body() createUserDto: CreateUserDto, @Res() res: Response) {
     // 1. Get body, params, querystring
     const { txId } = res.locals as { txId: string };
-    console.log(createUserDto);
 
     // 2. Get container service
     this.context.of(txId);

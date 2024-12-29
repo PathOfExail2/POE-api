@@ -3,6 +3,7 @@ import type { Request, Response } from 'express';
 
 const colors = {
   yellow: '\x1b[33m',
+  red: '\x1b[31m',
   reset: '\x1b[0m', // 색상 초기화
 };
 
@@ -11,7 +12,7 @@ const customFormat = format.printf(
     const error = err as Error | undefined;
 
     if (error) {
-      return `\n[level]: ${level}\n[service]: ${method}(${statusCode}) - ${url}\n[txId]: ${colors.yellow}${txId}${colors.reset}\n[error] ${error.stack}`;
+      return `\n[level]: ${level}\n[service]: ${method}(${statusCode}) - ${url}\n[txId]: ${colors.yellow}${txId}${colors.reset}\n[error] ${colors.red}${error.stack}${colors.reset}`;
     }
     return `\n[level]: ${level}\n[service]: ${method}(${statusCode}) - ${url}\n[message]: ${message}\n[txId]:  ${colors.yellow}${txId}${colors.reset}`;
   },
