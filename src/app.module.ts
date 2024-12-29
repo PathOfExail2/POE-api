@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { PingModule } from './modules/ping/ping.module';
-import { uuidMiddleware } from '@middlewares';
+import { uuidMiddleware, requestLoggerMiddleware } from '@middlewares';
 import { DatabaseModule } from './databases/database.module';
 
 @Module({
@@ -10,6 +10,6 @@ import { DatabaseModule } from './databases/database.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(uuidMiddleware).forRoutes('*');
+    consumer.apply(uuidMiddleware, requestLoggerMiddleware).forRoutes('*');
   }
 }
