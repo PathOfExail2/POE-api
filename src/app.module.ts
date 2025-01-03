@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { GlobalRouterModule } from './modules/global-router.module';
 
 @Module({
-  imports: [],
+  imports: [GlobalRouterModule],
   controllers: [],
   providers: [],
 })
