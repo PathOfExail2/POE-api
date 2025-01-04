@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { NestApplication } from '@nestjs/core';
 import { UUidMiddleware } from '../middlewares';
 
 @Module({})
