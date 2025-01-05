@@ -14,4 +14,12 @@ export class Currency extends DddAggregate {
 
   @Column()
   imageId: string;
+
+  private constructor() {
+    super();
+  }
+
+  static of() {
+    return new Currency();
+  }
 }
