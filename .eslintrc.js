@@ -1,3 +1,5 @@
+const { off } = require('process');
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -6,11 +8,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'anogle-back',
-  ],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'anogle-back'],
   root: true,
   env: {
     node: true,
@@ -25,5 +23,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-useless-constructor': 'off',
     'no-empty-function': 'off',
+    'no-underscore-dangle': 'off',
   },
 };

@@ -3,7 +3,7 @@ import { GlobalRouterModule } from './modules/global-router.module';
 import { DatabaseModule } from './databases/database.module';
 
 @Module({
-  imports: [DatabaseModule,GlobalRouterModule],
+  imports: [DatabaseModule, GlobalRouterModule],
   controllers: [],
   providers: [],
 })
