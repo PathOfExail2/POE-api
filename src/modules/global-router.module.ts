@@ -1,9 +1,10 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { RequestLoggerMiddleware, UUidMiddleware } from '@middlewares';
 import { GeneralsModule } from './generals/generals.module';
+import { AdminsModule } from './admins/admins.module';
 
 @Module({
-  imports: [GeneralsModule],
+  imports: [AdminsModule, GeneralsModule],
 })
 export class GlobalRouterModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
