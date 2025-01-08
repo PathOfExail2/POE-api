@@ -3,5 +3,5 @@ import { DddContext } from './ddd-context';
 
 export abstract class DddService {
   @Inject()
-  protected context: DddContext;
+  private context: DddContext;
 }

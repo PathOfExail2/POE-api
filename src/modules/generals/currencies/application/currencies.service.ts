@@ -9,6 +9,6 @@ export class GeneralsCurrenciesService extends DddService {
   }
 
   async list() {
-    return this.generalsCurrenciesRepository.find();
+    return this.generalsCurrenciesRepository.find({});
   }
 }

@@ -1,6 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { DddAggregate } from '@libs/ddd';
 
+type Creator = {
+  name: string;
+  description: string;
+  imageId: string;
+};
+
 @Entity()
 export class Currency extends DddAggregate {
   @PrimaryGeneratedColumn()
@@ -15,11 +21,16 @@ export class Currency extends DddAggregate {
   @Column()
   imageId: string;
 
-  private constructor() {
+  private constructor(args: Creator) {
     super();
+    if (args) {
+      this.name = args.name;
+      this.description = args.description;
+      this.imageId = args.imageId;
+    }
   }
 
-  static of() {
-    return new Currency();
+  static of(args: Creator) {
+    return new Currency(args);
   }
 }

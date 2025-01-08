@@ -2,16 +2,16 @@ import { Column, CreateDateColumn, Entity, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export abstract class DddAggregate {
-  @CreateDateColumn()
+  @CreateDateColumn({ select: false })
   private readonly createdAt!: Date;
 
-  @Column()
+  @Column({ select: false })
   private createdBy!: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ select: false })
   private readonly updatedAt!: Date;
 
-  @Column()
+  @Column({ select: false })
   private updatedBy!: string;
 
   setTxId(txId: string) {
