@@ -28,5 +28,16 @@ export class AdminsCurrenciesController {
   }
 
   @Get()
-  async get() {}
+  async get(@Res() res: Response) {
+    // 1. Get body, params, querystring
+    const { txId } = res.locals;
+
+    // 2. Get container service
+    this.context.set(txId);
+    // 3. Get service result
+    const data = await this.adminsCurrenciesService.list({});
+
+    // 4. Send response
+    return res.json({ data });
+  }
 }

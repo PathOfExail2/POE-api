@@ -9,6 +9,20 @@ export class AdminsCurrenciesService extends DddService {
     super();
   }
 
+  async list({
+    id,
+    name,
+    description,
+    imageId,
+  }: {
+    id?: number;
+    name?: string;
+    description?: string;
+    imageId?: string;
+  }) {
+    return this.adminsCurrenciesRepository.find({ id, name, description, imageId });
+  }
+
   /**
    * description Currency 생성 서비스
    */
