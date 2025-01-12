@@ -3,12 +3,14 @@ import { RouterModule } from '@nestjs/core';
 import { AdminsCurrenciesModule } from './currencies/currencies.module';
 import { AdminsRunesModule } from './runes/rune.module';
 import { AdminsCurrenciesIdModule } from './currencies/_id/id.module';
+import { AdminsUsersModule } from './users/users.module';
 
 @Module({
   imports: [
     AdminsCurrenciesModule,
     AdminsCurrenciesIdModule,
     AdminsRunesModule,
+    AdminsUsersModule,
     RouterModule.register([
       {
         path: 'admins',
@@ -24,6 +26,7 @@ import { AdminsCurrenciesIdModule } from './currencies/_id/id.module';
             ],
           },
           { path: 'runes', module: AdminsRunesModule },
+          { path: 'users', module: AdminsUsersModule },
         ],
       },
     ]),
