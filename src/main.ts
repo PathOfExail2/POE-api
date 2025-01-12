@@ -9,7 +9,7 @@ import { AppModule } from './app.module';
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
-  const server = await app.listen(3000, () => {
+  await app.listen(3000, () => {
     console.log('server is running on 3000. 😎');
   });
 })();

@@ -9,6 +9,9 @@ export class AdminsCurrenciesService extends DddService {
     super();
   }
 
+  /**
+   * description Currency 전체 리스트 조회
+   */
   async list({
     id,
     name,
