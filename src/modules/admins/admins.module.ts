@@ -4,9 +4,11 @@ import { AdminsCurrenciesModule } from './currencies/currencies.module';
 import { AdminsRunesModule } from './runes/rune.module';
 import { AdminsCurrenciesIdModule } from './currencies/_id/id.module';
 import { AdminsUsersModule } from './users/users.module';
+import { AdminsAuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    AdminsAuthModule,
     AdminsCurrenciesModule,
     AdminsCurrenciesIdModule,
     AdminsRunesModule,
@@ -15,6 +17,7 @@ import { AdminsUsersModule } from './users/users.module';
       {
         path: 'admins',
         children: [
+          { path: 'auth', module: AdminsAuthModule },
           {
             path: 'currencies',
             module: AdminsCurrenciesModule,
