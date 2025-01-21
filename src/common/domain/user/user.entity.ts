@@ -1,5 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { DddAggregate } from '@libs/ddd';
+import { createHash } from 'crypto';
+import { UnauthorizedException } from '@nestjs/common';
 
 type Creator = {
   email: string;
@@ -21,11 +23,23 @@ export class User extends DddAggregate {
     super();
     if (args) {
       this.email = args.email;
-      this.password = args.password;
+      this.password = this.hashPassword(args.password);
     }
   }
 
   static of(args: Creator) {
     return new User(args);
+  }
+
+  private hashPassword(password: string) {
+    return createHash('SHA-256').update(password).digest('hex');
+  }
+
+  validPassword(plainPassword: string) {
+    const hashedPassword = this.hashPassword(plainPassword);
+
+    if (this.password !== hashedPassword) {
+      throw new UnauthorizedException('wrong password.');
+    }
   }
 }
