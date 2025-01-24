@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD, RouterModule } from '@nestjs/core';
+import { AuthGuard } from '@libs/guards/auth';
 import { AdminsCurrenciesModule } from './currencies/currencies.module';
 import { AdminsRunesModule } from './runes/rune.module';
 import { AdminsCurrenciesIdModule } from './currencies/_id/id.module';
 import { AdminsUsersModule } from './users/users.module';
 import { AdminsAuthModule } from './auth/auth.module';
-import { AuthGuard } from '../../libs/guards/auth';
 
 @Module({
   imports: [
