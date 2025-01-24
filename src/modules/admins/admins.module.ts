@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { RouterModule } from '@nestjs/core';
+import { APP_GUARD, RouterModule } from '@nestjs/core';
 import { AdminsCurrenciesModule } from './currencies/currencies.module';
 import { AdminsRunesModule } from './runes/rune.module';
 import { AdminsCurrenciesIdModule } from './currencies/_id/id.module';
 import { AdminsUsersModule } from './users/users.module';
 import { AdminsAuthModule } from './auth/auth.module';
+import { AuthGuard } from '../../libs/guards/auth';
 
 @Module({
   imports: [
@@ -35,6 +36,12 @@ import { AdminsAuthModule } from './auth/auth.module';
     ]),
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      // NOTE: /admins/* 경로쪽은 모두 인증이 필요하다.
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AdminsModule {}

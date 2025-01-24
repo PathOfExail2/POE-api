@@ -17,6 +17,8 @@ export class AdminsCurrenciesController {
     const body = createdCurrencyDto;
     const { txId } = res.locals;
 
+    console.log(res.locals);
+
     // 2. Get container service
     this.context.set(txId);
 
