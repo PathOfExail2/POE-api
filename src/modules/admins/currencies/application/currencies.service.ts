@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DddService } from '@libs/ddd';
+import { Transaction } from '@libs/decorators/transaction';
 import { AdminsCurrenciesRepository } from '../infrastructure/currencies.repository';
 import { Currency } from '../../../../common/domain/currency/currency.entity';
 
@@ -29,6 +30,7 @@ export class AdminsCurrenciesService extends DddService {
   /**
    * description Currency 생성 서비스
    */
+  @Transaction()
   async create({
     name,
     description,
