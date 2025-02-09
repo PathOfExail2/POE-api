@@ -6,5 +6,8 @@ export class AdminsUsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  async get() {}
+  async get() {
+    const data = await this.usersService.list();
+    return { data };
+  }
 }
